@@ -1,0 +1,52 @@
+/*
+
+Structure of a CSS ruleset
+
+selector {
+  property: value;
+  other-property: other-value;
+}
+
+*/
+
+
+body {
+  background-color: limegreen;
+  /* Reset the browser/user agent defaults */
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  padding: 35px;
+  margin-top: 120px;
+}
+
+a {
+  color: #ffdc02;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  background-color: white;
+  text-align: center;
+  text-shadow: 0 0 30px green;
+}
+
+img {
+  width: 50%;
+  display: block;
+  margin: auto; /* Center */
+  border-radius: 100%;
+  box-shadow: 0 15px 30px black;
+}
+
+p {
+  font-style: italic;
+}
+
+/* higher specificity */
+p.fancy {
+  color: pink;
+  font-style: normal;
+  font-size: 200%;
+}
