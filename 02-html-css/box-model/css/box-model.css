@@ -1,0 +1,19 @@
+/*
+Turn on the new border-box model everywhere.
+* {
+  box-sizing: border-box;
+}
+*/
+
+.old {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+}
+
+.new {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
