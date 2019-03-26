@@ -4,6 +4,8 @@ Pesticide is a browser plugin that writes this one line of code for you.
 
 */
 
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
 body {
   background-color: #222;
   margin: 0;
@@ -32,6 +34,7 @@ h1 {
   background-color: #222;
   color: #ccc;
   padding: 1em;
+  font-family: 'Roboto', sans-serif;
 }
 
 main {
@@ -39,8 +42,21 @@ main {
   width: 75%;
 }
 
+main img {
+  display: block;
+  margin: auto;
+}
+
 aside {
   display: inline-block;
-  width: 24%;
+  width: 21%;
   vertical-align: top;
+  background-color: #cfc;
+  padding: 1em;
+  border-radius: 0.5em;
+  box-shadow: 0 0 15px #222;
+}
+
+aside ul {
+  padding-left: 17px;
 }
