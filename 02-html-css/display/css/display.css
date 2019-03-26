@@ -3,7 +3,7 @@
   height: 300px;
   border: 1px solid black;
   text-align: center;
-  line-height: 300px
+  line-height: 300px; /* Sneaky vertical centering */
 }
 
 .block {
@@ -11,6 +11,7 @@
 }
 
 .inline {
+  /* Cannot set width or height or margins */
   display: inline;
 }
 
@@ -24,4 +25,22 @@
 
 .visibility-hidden {
   visibility: hidden;
+}
+
+.spooky {
+}
+
+/* Descendents selector */
+.spooky span {
+  visibility: hidden;
+}
+
+.spooky:hover {
+  background-color: black;
+}
+
+.spooky:hover span {
+  transition: 2s all;
+  color: yellow;
+  visibility: visible;
 }
