@@ -6,7 +6,7 @@ const thumbnailify = function ($a) {
   const $thumbnail = $('<img>').attr('src', thumbnailURL);
   $a.append($thumbnail);
 
-  $thumbnail.on('click', function (event) {
+  $a.on('click', function (event) {
     event.preventDefault(); // Stay on the same page -- don't follow the link
 
     const embedURL = youtube.generateEmbedUrl( url );
