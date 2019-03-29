@@ -1,22 +1,27 @@
-const $links = $('li a');
+$(document).ready(function () {
+  const $links = $('li a');
 
-const thumbnailify = function ($a) {
-  const url = $a.attr('href');
-  const thumbnailURL = youtube.generateThumbnailUrl( url );
-  const $thumbnail = $('<img>').attr('src', thumbnailURL);
-  $a.append($thumbnail);
+  const thumbnailify = function ($a) {
+    const url = $a.attr('href');
+    const thumbnailURL = youtube.generateThumbnailUrl( url );
+    const $thumbnail = $('<img>').attr('src', thumbnailURL);
+    $a.append($thumbnail);
 
-  $a.on('click', function (event) {
-    event.preventDefault(); // Stay on the same page -- don't follow the link
+    $a.on('click', function (event) {
+      event.preventDefault(); // Stay on the same page -- don't follow the link
 
-    const embedURL = youtube.generateEmbedUrl( url );
-    const embedCode = `<iframe width="560" height="315" src="${ embedURL }" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      const embedURL = youtube.generateEmbedUrl( url );
+      const embedCode = `<iframe width="560" height="315" src="${ embedURL }" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
 
-    $('#player').hide().html(embedCode).fadeIn(3000);
-  });
-}
+      $('#player').hide().html(embedCode).fadeIn(3000);
+    });
+  }
 
-for (let i = 0; i < $links.length; i++) {
-  const $link = $( $links[i] ); // Turn the vanilla DOM node back into a jQuery object
-  thumbnailify( $link );
-}
+  for (let i = 0; i < $links.length; i++) {
+    const $link = $( $links[i] ); // Turn the vanilla DOM node back into a jQuery object
+    thumbnailify( $link );
+  }
+
+  $('h2').funText(500, 'reverseCandy');
+  $('a').funText(100, 'reverseCandy');
+});
