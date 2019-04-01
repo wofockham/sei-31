@@ -1,3 +1,11 @@
+// This code knows nothing of the rules for deposits or withdrawals.
+// Its job is to connect event handlers (and user interaction) with the
+// corresponding operations in accounts.js.
+
+// It also provides a much-used render() function which updates all
+// aspects of the page with the precise current balances and zero
+// styling, all in one place:
+
 const render = function () {
   $('#checking-balance').text('$' + accounts.checkingBalance);
   $('#savings-balance').text('$' + accounts.savingsBalance);
@@ -13,8 +21,10 @@ const render = function () {
   }
 };
 
+// All the event handlers must wait for the DOM to be ready before
+// they can be attached.
 $(document).ready(function () {
-  render();
+  render(); // Update the page with balances and zeros ASAP.
 
   $('#checking-deposit').on('click', function () {
     const amount = $('#checking-amount').val();

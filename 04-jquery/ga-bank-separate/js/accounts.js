@@ -1,3 +1,8 @@
+// Our accounts object is solely concerned with the rules for interacting with
+// bank accounts.
+// It is the single source of truth for the current balance.
+// This code knows nothing of the DOM.
+
 const accounts = {
   checkingBalance: 0,
   savingsBalance: 10,
