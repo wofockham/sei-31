@@ -1,0 +1,16 @@
+body {
+  background-color: lightgreen;
+  background-image: url(../img/money.gif);
+  background-size: cover;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+.container {
+  max-width: 960px;
+  margin: auto;
+  background-color: rgba(100, 255, 100, 0.5);
+  padding: 1em;
+}
