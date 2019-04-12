@@ -1,0 +1,20 @@
+body {
+  background-color: limegreen;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.feature {
+  max-width: 100%;
+}
+
+nav {
+  text-align: right;
+}
+
+nav a {
+  color: white;
+}
