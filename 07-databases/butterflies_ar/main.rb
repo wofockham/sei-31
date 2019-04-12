@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
 require 'active_record'
+require 'pry'
 
 # Rails will do all this for you automagically.
 ActiveRecord::Base.establish_connection(
@@ -14,9 +15,11 @@ ActiveRecord::Base.logger = Logger.new(STDERR)
 
 # Models
 class Butterfly < ActiveRecord::Base
+  belongs_to :plant, :optional => true # Since Rails 5
 end
 
 class Plant < ActiveRecord::Base
+  has_many :butterflies
 end
 
 get '/' do
@@ -40,6 +43,7 @@ post '/butterflies' do
   butterfly.name = params[:name]
   butterfly.family = params[:family]
   butterfly.image = params[:image]
+  butterfly.plant_id = params[:plant_id]
   butterfly.save
 
   redirect to("/butterflies/#{ butterfly.id }") # GET request
@@ -63,6 +67,7 @@ post '/butterflies/:id' do
   butterfly.name = params[:name]
   butterfly.family = params[:family]
   butterfly.image = params[:image]
+  butterfly.plant_id = params[:plant_id]
   butterfly.save
   redirect to("/butterflies/#{ params[:id] }")
 end
