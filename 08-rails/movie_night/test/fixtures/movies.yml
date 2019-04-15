@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  streaming: false
+  released: 2019-04-15
+  rating: MyString
+  plot: MyText
+
+two:
+  title: MyString
+  streaming: false
+  released: 2019-04-15
+  rating: MyString
+  plot: MyText
