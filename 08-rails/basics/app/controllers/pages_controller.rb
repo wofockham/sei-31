@@ -10,4 +10,8 @@ class PagesController < ApplicationController
   def about
     render :about
   end
+
+  def funny
+    render :funny
+  end
 end
