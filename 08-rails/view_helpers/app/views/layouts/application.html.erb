@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ViewHelpers</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav>
+      <%= link_to "Home", root_path %>
+      <%= link_to "Numbers", numbers_path %>
+      <%= link_to "Text", text_path %>
+      <%= link_to "Assets", assets_path %>
+      <%= link_to "URL", url_path %>
+    </nav>
+    <%= yield %>
+  </body>
+</html>
