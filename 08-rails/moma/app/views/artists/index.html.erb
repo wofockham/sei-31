@@ -1,0 +1,14 @@
+<h1>All Artists</h1>
+
+<% @artists.each do |artist| %>
+  <%= image_tag artist.image, :class => 'thumb' %>
+
+  <ul>
+    <li>Name: <%= link_to artist.name, artist_path(artist.id) %></li>
+    <li>Nationality: <%= artist.nationality %></li>
+    <% if artist.dob.present? %>
+      <li>Date of Birth: <%= artist.dob.strftime '%A, %B %e, %Y' %></li>
+    <% end %>
+    <li>Period: <%= artist.period %></li>
+  </ul>
+<% end %>
