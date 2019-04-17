@@ -1,6 +1,7 @@
 # == Route Map
 #
 #      Prefix Verb   URI Pattern                 Controller#Action
+#        root GET    /                           artists#index
 #     artists GET    /artists(.:format)          artists#index
 #             POST   /artists(.:format)          artists#create
 #  new_artist GET    /artists/new(.:format)      artists#new
@@ -9,8 +10,17 @@
 #             PATCH  /artists/:id(.:format)      artists#update
 #             PUT    /artists/:id(.:format)      artists#update
 #             DELETE /artists/:id(.:format)      artists#destroy
+#       works GET    /works(.:format)            works#index
+#             POST   /works(.:format)            works#create
+#    new_work GET    /works/new(.:format)        works#new
+#   edit_work GET    /works/:id/edit(.:format)   works#edit
+#        work GET    /works/:id(.:format)        works#show
+#             PATCH  /works/:id(.:format)        works#update
+#             PUT    /works/:id(.:format)        works#update
+#             DELETE /works/:id(.:format)        works#destroy
 
 Rails.application.routes.draw do
   root :to => 'artists#index'
   resources :artists
+  resources :works
 end
