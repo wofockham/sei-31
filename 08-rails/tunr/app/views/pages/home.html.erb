@@ -1,4 +1,6 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
-<h2>Welcome back <%= @current_user.email %></h2>
+<% if @current_user.present? %>
+  <h2>Welcome back <%= @current_user.email %></h2>
+<% end %>
