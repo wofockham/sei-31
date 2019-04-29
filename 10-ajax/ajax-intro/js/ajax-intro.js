@@ -1,22 +1,20 @@
-// get an XHR instance
-const xhr = new XMLHttpRequest();
+const fetchFact = function () {
+  const xhr = new XMLHttpRequest();
 
-// callback that fires every time the "readyState" changes.
-xhr.onreadystatechange = function () {
+  xhr.onreadystatechange = function () {
+    // Ignore all the readyStates except 4. Get out of this function ASAP.
+    if (xhr.readyState !== 4) {
+      return;
+    }
+    const p = document.createElement('p');
+    const data = JSON.parse( xhr.responseText ); // Convert the JSON string into a JS object.
+    p.innerHTML = data.text; // data["text"]
+    document.body.appendChild(p);
+  };
 
-  // Ignore all the readyStates except 4. Get out of this function ASAP.
-  if (xhr.readyState !== 4) {
-    return;
-  }
-
-  document.body.innerHTML = '<p>' + xhr.responseText + '</p>';
+  xhr.open('GET', 'http://numbersapi.com/random/trivia?json');
+  xhr.send(); // Asynchronous
 };
 
-// open the connection
-xhr.open('GET', 'http://numbersapi.com/random/trivia');
-
-// make the actual request
-xhr.send(); // Asynchronous
-
-
-// display the result
+document.getElementById('fetch').addEventListener('click', fetchFact);
+fetchFact();
