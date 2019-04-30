@@ -22,6 +22,8 @@ const showImages = function (results) {
   });
 };
 
+let currentPage = 1;
+
 const searchFlickr = function (terms) {
   console.log(`Searching Flickr for ${ terms }`);
 
@@ -30,7 +32,8 @@ const searchFlickr = function (terms) {
     method: 'flickr.photos.search',
     api_key: '2f5ac274ecfac5a455f38745704ad084', // not a secret key
     text: terms,
-    format: 'json'
+    format: 'json',
+    page: currentPage++
   }).done( showImages ).done(function (data) {
     console.log( data );
   });
