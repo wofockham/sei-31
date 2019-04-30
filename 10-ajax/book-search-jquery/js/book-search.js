@@ -6,14 +6,11 @@ $(document).ready(function () {
     const title = $('#book_title').val();
     const url = `https://www.googleapis.com/books/v1/volumes?q=title:${ title }`;
 
-    $.ajax(url, {
-      // Original jQuery way of handling a successful request
-      success: function (data) {
-        const cover = data.items[0].volumeInfo.imageLinks.thumbnail;
-        $('#cover').attr('src', cover);
-      }
+    // Deferred syntax (similar to the Promises syntax)
+    $.ajax(url).done(function (data) {
+      const cover = data.items[0].volumeInfo.imageLinks.thumbnail;
+      $('#cover').attr('src', cover);
     });
-
   });
 
 });
