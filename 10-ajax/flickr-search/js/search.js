@@ -1,3 +1,9 @@
+const state = {
+  currentPage: 1,
+  lastPageReached: false,
+  requestInProgress: false
+};
+
 const showImages = function (results) {
 
   // Nested AKA helper function that returns a thumbnail URL for a given photo object.
@@ -22,20 +28,28 @@ const showImages = function (results) {
   });
 };
 
-let currentPage = 1;
 
 const searchFlickr = function (terms) {
+  if (state.lastPageReached || state.requestInProgress) return;
+
   console.log(`Searching Flickr for ${ terms }`);
 
   const flickrURL = 'https://api.flickr.com/services/rest?jsoncallback=?';
+
+  state.requestInProgress = true;
+
   $.getJSON(flickrURL, {
     method: 'flickr.photos.search',
     api_key: '2f5ac274ecfac5a455f38745704ad084', // not a secret key
     text: terms,
     format: 'json',
-    page: currentPage++
+    page: state.currentPage++
   }).done( showImages ).done(function (data) {
     console.log( data );
+    if (data.photos.page >= data.photos.pages) {
+      state.lastPageReached = true;
+    }
+    state.requestInProgress = false;
   });
 };
 
@@ -45,6 +59,10 @@ $(document).ready(function () {
 
     const query = $('#query').val();
     $('#images').empty();
+
+    state.lastPageReached = false;
+    state.currentPage = 1;
+
     searchFlickr(query);
   });
 
