@@ -39,8 +39,6 @@ viewInput : String -> String -> String -> (String -> Msg) -> Html Msg
 viewInput t p v toMsg =
   input [ type_ t, placeholder p, value v, onInput toMsg ] []
 
-viewInput "password"
-
 viewValidation : Model -> Html Msg
 viewValidation model =
   if model.password == model.passwordAgain then
