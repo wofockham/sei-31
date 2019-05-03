@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react'; // destructuring
 
-class HelloWorld extends React.Component {
+class HelloWorld extends Component {
   // Every React component must have a method called render()
   render() {
     return (
-      <h1 class="hey-there">Hello World!!!!!!!!!! OMG LIVE RELOADING</h1>
+      <h1>Hello World!!!!!!!!!! OMG LIVE RELOADING</h1>
     );
   }
 }
