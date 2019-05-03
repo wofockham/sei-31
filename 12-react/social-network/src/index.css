@@ -12,3 +12,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.profile {
+  max-width: 960px;
+  margin: 0 auto;
+  background-color: #ddd;
+}
