@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axios from 'axios'; // installed with: npm install axios
 
 class Weather extends Component {
   constructor() {
     super();
-    this.state = { weatherData: null };
+    this.state = { weatherData: null }; // All the weather data from the response is stored here.
     this.fetchWeather = this.fetchWeather.bind(this);
   }
 
+  // Fetches the weather for a given city and stores the response as state.
   fetchWeather(city) {
     const weatherURL = 'http://api.openweathermap.org/data/2.5/weather';
     const weatherParams = {
       q: city,
       units: 'metric',
-      appid: '87f3530b034ce83f07479771285f8bdf'
+      appid: '87f3530b034ce83f07479771285f8bdf' // Thanks, random Github user.
     };
+
+    // Axios expects a different format to previous AJAX code:
     axios.get(weatherURL, {params: weatherParams}).then((result) => {
       // console.log here is useful to see exactly what's been returned
       this.setState({weatherData: result.data}); // Note that the actual weather info is in result.data
@@ -55,12 +58,12 @@ class SearchForm extends Component {
         <input type="search" placeholder="Glasgow" required onInput={ this._handleInput } />
         <input type="submit" value="Go" />
       </form>
-    )
+    );
   }
 }
 
 const WeatherInfo = (props) => {
-  // conditional rendering:
+  // conditional rendering: show nothing until we have the weather info in a prop.
   if (props && props.data === null) {
     return ''; // no results to show yet
   } else {
