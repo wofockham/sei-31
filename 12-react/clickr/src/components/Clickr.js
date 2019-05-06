@@ -1,26 +1,16 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class Clickr extends Component {
-  constructor() {
-    super(); // This runs the original React Component constructor which React needs to set up.
-    this.state = {
-      clicks: 0
-    };
-    // Every event handler that needs access to `this` should be bound in the constructor.
-    this._incrementClicks = this._incrementClicks.bind(this);
-  }
+// React Hooks
+const Clickr = function () {
+  const [clicks, setClicks] = useState(0); // Destructuring
 
-  _incrementClicks() {
-    // this.state.clicks += 1; // Mutation: won't work
-    this.setState({clicks: this.state.clicks + 1});
-  }
+  const incrementClicks = () => {
+    setClicks(1 + clicks); // this.setState({clicks: this.state.clicks+1});
+  };
 
-  render() {
-    console.log('render() has been called');
-    return (
-      <button onClick={ this._incrementClicks }>{ this.hotdogs.clicks } clicks so far</button>
-    )
-  }
+  return (
+    <button onClick={ incrementClicks }>{ clicks } clicks so far</button>
+  );
 };
 
 export default Clickr;
