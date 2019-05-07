@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 const SERVER_URL = 'http://localhost:3000/secrets.json'; // Change this to a Heroku URL once deployed.
+// const SERVER_URL = 'http://8a0d9fc1.ngrok.io/secrets.json';
 
 class Secrets extends Component {
   constructor() {
@@ -11,26 +12,22 @@ class Secrets extends Component {
     };
     this.saveSecret = this.saveSecret.bind(this);
 
-    // request secrets from the server
-    axios.get(SERVER_URL).then((results) => {
-      console.log( results );
-    });
-    // make those secrets the new state
+    const fetchSecrets = () => {
+      axios.get(SERVER_URL).then((results) => {
+        this.setState({ secrets: results.data });
+        setTimeout(fetchSecrets, 4000); // recursion
+      });
+    };
+
+    fetchSecrets();
   }
 
   saveSecret(content) {
-    // turn the content into a secret object
-    const secret = {
-      id: Math.random(),
-      content: content
-    };
-
-    // TODO: ES6
-    const newSecrets = this.state.secrets.slice(0); // es5 copy
-    newSecrets.push( secret );
-
     // add the secret to the state (the collection of secrets)
-    this.setState({ secrets: newSecrets })
+    axios.post(SERVER_URL, {content: content}).then((result) => {
+      // ES6 Spread operator
+      this.setState({secrets: [...this.state.secrets, result.data]});
+    });
   }
 
   render() {
