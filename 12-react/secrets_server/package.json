@@ -1,0 +1,5 @@
+{
+  "name": "secrets_server",
+  "private": true,
+  "dependencies": {}
+}
