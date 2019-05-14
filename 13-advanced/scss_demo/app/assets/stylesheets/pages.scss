@@ -1,0 +1,74 @@
+// Variables:
+$brand-color: aliceblue;
+$centered: 0 auto; // This improves the readability of your code.
+
+// "Functions":
+@mixin colouredBackground {
+  background-color: $brand-color;
+}
+
+@mixin greyItalic {
+  font-style: italic;
+  color: grey;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  @include colouredBackground;
+}
+
+h1 {
+  text-align: center;
+}
+
+.post {
+  max-width: 960px;
+  margin: $centered;
+  margin-bottom: 3em;
+  padding: 1em;
+  border-bottom: 1px solid black;
+  background-color: white;
+  border-radius: 0.5em;
+
+  h2 {
+    @include greyItalic;
+  }
+
+  h3.author {
+    text-align: right;
+  }
+
+  .content {
+    border: 1px solid $brand-color;
+    padding: 1em;
+    border-radius: 0.5em;
+
+    p {
+      font-size: 120%;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+.notification {
+  border: 1px solid black;
+  border-radius: 0.5em;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: blue;
+  padding: 1em;
+  font-size: 150%;
+  font-weight: bold;
+}
+
+// Inheritance
+.error {
+  @extend .notification;
+  color: red;
+}
+
+.success {
+  @extend .notification;
+  color: green;
+}
