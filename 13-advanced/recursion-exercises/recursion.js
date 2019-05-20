@@ -2,19 +2,15 @@
 // You will have to figure out what parameters to include
 // All functions must use recursion
 
-function findMax (array, index=0, max=-Infinity) {
-
-  const currentCandidate = array[index];
-
-  if (currentCandidate > max) {
-    max = currentCandidate;
+function findMax (array, max=-Infinity) {
+  if (array.length === 0) {
+    return max;
   }
 
-  if (index >= array.length) {
-    return max; // base case.
-  } else {
-    return findMax(array, index+1, max);
+  if (array[0] > max) {
+      max = array[0]
   }
+  return findMax(array.slice(1), max);
 }
 
 function factorial (n) {
