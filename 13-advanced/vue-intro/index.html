@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue Intro</title>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css'>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    {{ message }}
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello World From Vue.js!'
+      }
+    });
+  </script>
+
+  <div id="app-2">
+    <span v-bind:title="message">Hover over this text</span>
+  </div>
+
+  <script>
+    const app2 = new Vue({
+      el: '#app-2',
+      data: {
+        message: "You loaded this page on " + new Date().toLocaleString()
+      }
+    });
+  </script>
+
+  <div id="app-3">
+    <span v-if="visible">You can see these words</span>
+  </div>
+
+  <script>
+    const app3 = new Vue({
+      el: '#app-3',
+      data: {
+        visible: false
+      }
+    })
+  </script>
+
+  <div id="app-4">
+    <ol>
+      <li v-for="todo in todos">
+        {{ todo.text }}
+      </li>
+    </ol>
+  </div>
+
+  <script>
+    const app4 = new Vue({
+      el: '#app-4',
+      data: {
+        todos: [
+          { text: 'Learn more Javascript' },
+          { text: 'Learn Vue File Components' },
+          { text: 'Avoid React' },
+          { text: 'Kill All Humans' },
+        ]
+      }
+    })
+  </script>
+
+</body>
+</html>
