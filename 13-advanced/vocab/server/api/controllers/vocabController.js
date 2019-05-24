@@ -16,7 +16,7 @@ exports.createWord = (req, res) => {
     if (err) {
       res.send(err);
     }
-    res.send(word);
+    res.json(word);
   });
 };
 
