@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Edit Word</h1>
-    <word-form :word=this.word></word-form>
+    <word-form :word=this.word @createOrUpdateWord="createOrUpdate"></word-form>
   </div>
 </template>
 
@@ -18,6 +18,13 @@ export default {
   data() {
     return {
       word: {}
+    }
+  },
+  methods: {
+    createOrUpdate: async function(word) {
+      await api.updateWord(word);
+      alert('Word updated successfully!');
+      this.$router.push(`/words/${ word._id }`);
     }
   },
   async mounted() {

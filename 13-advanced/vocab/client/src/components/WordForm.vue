@@ -6,14 +6,14 @@
       <div class="ui label">
         <i class="germany flag"></i> German
       </div>
-      <input type="text" placeholder="Enter word..." v-model="word.german" />
+      <input type="text" placeholder="Enter word..." v-model.trim="word.german" />
     </div>
 
     <div class="ui labeled input fluid">
       <div class="ui label">
         <i class="united kingdom flag"></i> English
       </div>
-      <input type="text" placeholder="Enter word..." v-model="word.english" />
+      <input type="text" placeholder="Enter word..." v-model.trim="word.english" />
     </div>
 
     <button class="positive ui button">Save</button>
@@ -36,8 +36,11 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log(`English: ${this.word.english}`);
-      console.log(`German: ${this.word.german}`);
+      if (this.word.english === '' || this.word.german === '') {
+        this.errorsPresent = true;
+      } else {
+        this.$emit('createOrUpdateWord', this.word);
+      }
     }
   }
 }
