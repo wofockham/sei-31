@@ -18,8 +18,14 @@
               Show
             </router-link>
           </td>
-          <td width="75" class="center aligned">Edit</td>
-          <td width="75" class="center aligned">Destroy</td>
+          <td width="75" class="center aligned">
+            <router-link :to="{ name: 'edit', params: { id: word._id }}">
+              Edit
+            </router-link>
+          </td>
+          <td width="75" class="center aligned" @click.prevent="onDestroy(word._id)">
+            <a :href="`/words/${word._id}`">Destroy</a>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -34,6 +40,19 @@ export default {
   data() {
     return {
       words: []
+    }
+  },
+  methods: {
+    async onDestroy(id) {
+      const sure = confirm('Are you sure?');
+      if (!sure) {
+        return;
+      }
+
+      await api.deleteWord(id);
+      this.flash('Word successfully deleted!', 'success');
+      const updatedWords = this.words.filter((word) => word._id !== id);
+      this.words = updatedWords;
     }
   },
   // Vue lifecycle:

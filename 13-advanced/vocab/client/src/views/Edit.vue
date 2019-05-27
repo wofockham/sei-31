@@ -23,7 +23,7 @@ export default {
   methods: {
     createOrUpdate: async function(word) {
       await api.updateWord(word);
-      alert('Word updated successfully!');
+      this.flash('Word updated successfully!', 'success');
       this.$router.push(`/words/${ word._id }`);
     }
   },
