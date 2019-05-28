@@ -49,4 +49,34 @@ RSpec.describe FruitsController, type: :controller do
       end
     end
   end
+
+  describe 'POST to create' do
+    describe 'a fruit with valid information' do
+      before do
+        post :create, :params => { :fruit => { :name => 'Dragon fruit' } }
+      end
+
+      it 'should redirect to the show page' do
+        expect(response).to redirect_to(fruit_path(assigns(:fruit))) # /fruits/19
+      end
+
+      it 'should increase the number of fruits in the database' do
+        expect(Fruit.count).to eq 1
+      end
+    end
+
+    describe 'a fruit with invalid information' do
+      before do
+        post :create, :params => { :fruit => {:name => '' } }
+      end
+
+      it 'should render the new template' do
+        expect(response).to render_template('new')
+      end
+
+      it 'should not increase the number of fruits in the database' do
+        expect(Fruit.count).to eq 0
+      end
+    end
+  end
 end
