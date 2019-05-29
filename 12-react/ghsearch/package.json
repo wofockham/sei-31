@@ -22,6 +22,8 @@
   },
   "dependencies": {
     "preact": "^8.4.2",
-    "preact-compat": "^3.18.5"
+    "preact-compat": "^3.18.5",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0"
   }
 }
