@@ -5,7 +5,17 @@
  */
 
 module.exports = {
+  siteMetadata: {
+    title: 'This is a not Bill Murray Fan site'
+  },
   plugins: [
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'src',
+        path: `${__dirname}/src/`
+      }
+    },
     'gatsby-plugin-emotion',
     {
       resolve: 'gatsby-plugin-typography',
