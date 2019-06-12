@@ -1,0 +1,6 @@
+# Here is a list of integers that should add to 18
+1
+2
+7
+
+8
